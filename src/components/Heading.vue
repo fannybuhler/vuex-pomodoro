@@ -10,13 +10,7 @@ export default {
 
   computed: {
     isSession() {
-      const breakLength = this.$store.getters.getBreakLength
-      const sessionLength = this.$store.getters.getSessionLength
-      const duration = this.$store.getters.getDuration
-
-      const durationTime = duration % (breakLength + sessionLength)
-      
-      return durationTime < sessionLength
+      return this.$store.getters.getIsSession
     }
   }
 }

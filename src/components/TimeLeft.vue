@@ -1,34 +1,31 @@
 <template>
   <div>
-    <h3>{{ formattedTimeLeft }}</h3>
+    <h3>{{ prettyDuration }}</h3>
   </div>
 </template>
 
 <script>
+import moment from 'moment'
+
 export default {
   name: "TimeLeft",
-  data: () => ({
-    timeLeft: Number,
-    timePassed: Number
-  }),
-
   computed: {
-    formattedTimeLeft() {
-      const timeLeft = this.timeLeft
-      const minutes = Math.floor(timeLeft / 60)
-      let seconds = timeLeft % 60
-      if (seconds < 10) {
-        seconds = `0${seconds}`
-      }
+    duration() {
+      const breakLength = this.$store.getters.getBreakLength
+      const sessionLength = this.$store.getters.getSessionLength
+      const durationTime = this.$store.getters.getDurationTime
+      const isSession = this.$store.getters.getIsSession
 
-      return `${minutes}:${seconds}`
+      if(isSession) {
+        return sessionLength - durationTime
+      } 
+      
+      return breakLength - (durationTime - sessionLength)
     },
 
-  },
-
-  mounted() {
-    this.timeLeft = this.$store.getters.getSessionLength
-    this.timePassed = this.$store.getters.getDuration
+    prettyDuration() {
+      return moment.utc(this.duration * 1000).format("mm:ss");
+    }
   }
 }
 </script>

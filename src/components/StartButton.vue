@@ -13,7 +13,6 @@ export default {
   }),
 
   mounted() {
-    console.log('Get duration 1:', this.$store.getters.getDuration)
     setInterval(() => {
       if (this.isStarted) {
         this.$store.dispatch('increment')
