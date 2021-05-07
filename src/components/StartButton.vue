@@ -1,5 +1,5 @@
 <template>
-  <button @click="isStarted = !isStarted">
+  <button @click="toggleIsStarted">
     {{ isStarted ? 'Stoppa' : 'Starta' }}
   </button>
 </template>
@@ -7,16 +7,25 @@
 <script>
 export default {
   name: "StartButton",
+  computed: {
+    isStarted() {
+      const isStarted = this.$store.getters.getIsStarted
+      return isStarted
+    }
+  },
 
-  data: () => ({
-    isStarted: false
-  }),
+  methods: {
+    toggleIsStarted(){
+      console.log("clicked start/stop buton")
+      console.log("isStarted:", this.isStarted)
+      this.$store.dispatch('toggleIsStarted')
+    }
+  },
 
   mounted() {
     setInterval(() => {
       if (this.isStarted) {
         this.$store.dispatch('increment')
-        console.log('Get duration 2:', this.$store.getters.getDuration)
       }
     }, 1000) 
   }
