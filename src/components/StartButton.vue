@@ -1,6 +1,6 @@
 <template>
   <button @click="toggleIsStarted">
-    {{ isStarted ? 'Stoppa' : 'Starta' }}
+    {{ isStarted ? 'Stop' : 'Start' }}
   </button>
 </template>
 
