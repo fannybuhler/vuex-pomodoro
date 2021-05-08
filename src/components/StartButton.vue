@@ -16,8 +16,6 @@ export default {
 
   methods: {
     toggleIsStarted(){
-      console.log("clicked start/stop buton")
-      console.log("isStarted:", this.isStarted)
       this.$store.dispatch('toggleIsStarted')
     }
   },

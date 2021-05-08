@@ -8,6 +8,7 @@
       <BreakLength />
     </div>
     <StartButton />
+    <ResetButton />
   </div>
 </template>
 
@@ -19,6 +20,7 @@ import TimeLeft from "@/components/TimeLeft.vue";
 import StartButton from "@/components/StartButton.vue";
 import SessionLength from "@/components/SessionLength.vue";
 import BreakLength from "@/components/BreakLength.vue";
+import ResetButton from "@/components/ResetButton.vue";
 
 export default {
   name: "Home",
@@ -28,7 +30,8 @@ export default {
     TimeLeft,
     StartButton,
     SessionLength,
-    BreakLength
+    BreakLength,
+    ResetButton
   }
 };
 </script>

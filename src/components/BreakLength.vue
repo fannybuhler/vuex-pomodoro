@@ -14,11 +14,11 @@ export default {
   name: "BreakLength",
   methods: {
     increaseBreak() {
-      this.$store.commit('changeBreakLength', 1)
+      this.$store.dispatch('changeBreakLength', 1)
     },
 
     decreaseBreak() {
-      this.$store.commit('changeBreakLength', -1)
+      this.$store.dispatch('changeBreakLength', -1)
     }
   },
 

@@ -14,11 +14,11 @@ export default {
   name: "SessionLength",
   methods: {
     increaseSession() {
-      this.$store.commit('changeSessionLength', 1)
+      this.$store.dispatch('changeSessionLength', 1)
     },
 
     decreaseSession() {
-      this.$store.commit('changeSessionLength', -1)
+      this.$store.dispatch('changeSessionLength', -1)
     }
   },
 

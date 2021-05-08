@@ -31,24 +31,43 @@ export default createStore({
 
     toggleIsStarted(context) {
       context.commit('toggleIsStarted')
+    },
+
+    reset(context){
+      context.commit('reset')
+    },
+    
+    changeSessionLength(context, payload) {
+      payload = payload * 60 //60 seconds
+      context.commit('changeSessionLength', payload)
+    },
+
+    changeBreakLength(context, payload) {
+      payload = payload * 60 //60 seconds
+      context.commit('changeBreakLength', payload)
     }
-  },
+  }, 
 
   mutations: {
     toggleIsStarted(state) {
       state.isStarted = !state.isStarted 
     },
 
-    changeSessionLength(state, value) {
-      state.sessionLength += (value * 60) 
+    changeSessionLength(state, payload) {
+      state.sessionLength += payload 
     },
 
-    changeBreakLength(state, value) {
-      state.breakLength += (value * 60)
+    changeBreakLength(state, payload) {
+      state.breakLength += payload
     },
 
     increment (state) {
       state.duration++
+    },
+
+    reset(state) {
+      state.duration = 0
+      state.isStarted = false 
     }
   },
 
